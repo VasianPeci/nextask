@@ -1,3 +1,0 @@
-- [ ] Edit src/sendemail.php to set datetime in UTC as ISO 8601 string ('Y-m-d\TH:i:s\Z')
-- [ ] Edit src/codeverification.php to use the datetime string directly in new Date() without string replacement
-- [ ] Test the timer functionality to ensure expiration works correctly

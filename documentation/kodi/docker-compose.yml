@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - SENDGRID_API_KEY=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
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: vasian26_root_calisthenics
+      MYSQL_DATABASE: nextask
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks:
+  nextask-network:
+    driver: bridge
+
+volumes:
+  db_data:

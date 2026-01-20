@@ -538,7 +538,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel="stylesheet" href="style.css">
     </head>
     <body class="centered-body">
-        <!-- Error Handling-->
         <?php
             if ($manager_error) {
                 echo "<script>alert('User does not exist or is not a project manager!')</script>";
@@ -566,9 +565,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<script>alert('Team with this id does not exist!')</script>";
                 $invalid_team = false;
              } ?>
-
-            
-        <!-- Menu Bar for each role -->
             <nav>
                 <ul>
                     <li class="active" id="profile-item"><button id="profile-btn">Profile</button></li>
@@ -581,8 +577,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php endif; ?>
                 </ul>
             </nav>
-
-        <!--Profile Settings -->
             <main id="profile">
                 <div id="settings">
                     <h2><?php echo "$username"; ?></h2>
@@ -649,14 +643,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </form>
             </main>
-
-        <!-- Working Section for each role -->
             <main id="working-section" style="display: none;">
-
-                <!-- Project Owner Section -->
                 <?php if ($role == 'PROJECT_OWNER'): ?>
-
-                <!-- Team Settings and Project Creation -->
                     <div id="settings">
                         <?php if ($team): ?>
                         <h2>Team: <?php echo "$team"; ?></h2>
@@ -686,17 +674,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php endif; ?>
                     </div>
                     <?php if ($team): ?>
-
-                <!-- Projects Display Section -->
                     <main id="projects">
                     </main>
-
                     <?php endif; ?>
-
-                <!-- Project Manager Section -->
                 <?php elseif ($role == 'PROJECT_MANAGER'): ?>
-                
-                <!-- Project Settings and Task Creation -->
                     <div id="settings" class="<?= ($project_progress ?? 0) == 100 ? 'project-completed' : '' ?>">
                         <?php if ($project): ?>
                         <h2>Project: <?php if ($project_name) {
@@ -748,17 +729,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php endif; ?>
                     </div>
                     <?php if ($project): ?>
-                
-                <!-- Tasks Display Section -->
                     <main id="tasks">
                     </main>
                     <?php endif; ?>
-                
-                <!-- Contributor Section -->
                 <?php else: ?>
                     <div id="settings">
                         <?php if ($contributor_tasks): ?>
-                        <?php else: ?>z
+                        <?php else: ?>
                         <h2>No Tasks</h2>
                         <?php endif; ?>
                     </div>
